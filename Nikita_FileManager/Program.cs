@@ -11,13 +11,11 @@ namespace Nikita_FileManager
     {
         static void Main(string[] args)
         {
-            ShowInfo.Show();
-            FileActions.Actions();
+            var facade = new Facade(new FileSearcher(), new FileActions(), new ShowInfo());
+
+            facade.Operation();
 
             Console.ReadKey();
-
-            //var facade = new Facade(new FileSearcher(), new FileActions(), new ShowInfo());
-            //facade.Operation();
         }
     }
 }
