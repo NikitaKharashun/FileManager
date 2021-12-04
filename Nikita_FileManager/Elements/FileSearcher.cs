@@ -14,16 +14,25 @@ namespace Nikita_FileManager.Elements
 
         public static void Searcher(string path, string pattern)
         {
-            var dir = new DirectoryInfo(path);    
+            
+            var dir = new DirectoryInfo(path);
 
-            foreach (var file in dir.GetFiles(pattern))
+            if (dir.Exists)
             {
-                Counter++;
-                Files.Add(Counter, file);
+                foreach (var file in dir.GetFiles(pattern))
+                {
+                    Counter++;
+                    Files.Add(Counter, file);
+                }
+
+                foreach (var subdir in dir.GetDirectories())
+                    Searcher(subdir.FullName, pattern);
             }
 
-            foreach (var subdir in dir.GetDirectories())            
-                Searcher(subdir.FullName, pattern);            
+            else
+            {
+                Console.WriteLine("Заданной директории не существует");
+            }
         }
     }
 }

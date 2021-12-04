@@ -19,19 +19,42 @@ namespace Nikita_FileManager.Elements
                 Console.WriteLine("Введите имя файла с расширением: ");
                 string fileChoise = Console.ReadLine();
 
-                foreach (var file in FileSearcher.Files)
+                try
                 {
-                    if (fileChoise.Equals(file.Value.Name))
-                        file.Value.Delete();
-                }  
+                    foreach (var file in FileSearcher.Files)
+                    {
+                        if (fileChoise.Equals(file.Value.Name))
+                            file.Value.Delete();
+                    }
+                }
 
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+                Console.WriteLine("Файл успешно удален. Оставшиеся файлы:");
+                ShowInfo.Show();
             }
+
 
             else if (input == "2")
             {
-                foreach (var file in FileSearcher.Files)
-                    file.Value.Delete();
+                try
+                {
+                    foreach (var file in FileSearcher.Files)                        
+                        file.Value.Delete();
+                }
+
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+                Console.WriteLine("Файлы успешно удалены.\n Оставшиеся файлы: ");
+                ShowInfo.Show();
             }
+
 
             else if (input == "3")
             {
@@ -41,8 +64,24 @@ namespace Nikita_FileManager.Elements
                 Console.WriteLine("Введите конечный файл:");
                 int.TryParse(Console.ReadLine(), out int FinishIndex);
 
-                for (; startIndex <= FinishIndex; startIndex++)               
-                    FileSearcher.Files.Remove(startIndex);                
+                try
+                {
+                    for (; startIndex <= FinishIndex; startIndex++)
+                        FileSearcher.Files.Remove(startIndex);
+                }
+
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+                Console.WriteLine("Файлы успешно удалены.\n Оставшиеся файлы:");
+                ShowInfo.Show();
+            }
+
+            else
+            {
+                Console.WriteLine("Действие не распознано");
             }
         }
     }
