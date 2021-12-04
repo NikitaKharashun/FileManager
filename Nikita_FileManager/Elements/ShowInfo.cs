@@ -11,7 +11,7 @@ namespace Nikita_FileManager.Elements
     {
         public static void Show()
         {
-
+            FileSearcher.Files.Clear();
             FileSearcher.Searcher(@".", "*.txt");       
 
             foreach (var file in FileSearcher.Files)           
