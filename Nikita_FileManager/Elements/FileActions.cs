@@ -36,13 +36,13 @@ namespace Nikita_FileManager.Elements
             else if (input == "3")
             {
                 Console.WriteLine("Введите стартовый файл:");
-                int.TryParse(Console.ReadLine(), out int from);
+                int.TryParse(Console.ReadLine(), out int startIndex);
 
                 Console.WriteLine("Введите конечный файл:");
-                int.TryParse(Console.ReadLine(), out int to);
+                int.TryParse(Console.ReadLine(), out int FinishIndex);
 
-                for (;  from <= to; to++)               
-                    FileSearcher.Files.Remove(to);                
+                for (; startIndex <= FinishIndex; startIndex++)               
+                    FileSearcher.Files.Remove(startIndex);                
             }
         }
     }
