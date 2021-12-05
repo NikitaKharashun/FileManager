@@ -11,9 +11,7 @@ namespace Nikita_FileManager
     {
         static void Main(string[] args)
         {
-            var facade = new Facade(new FileSearcher(), new FileActions(), new ShowInfo());
-
-            facade.Operation();
+            Facade.Operation();
 
             Console.ReadKey();
         }

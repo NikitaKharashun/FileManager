@@ -8,9 +8,9 @@ namespace Nikita_FileManager.Elements
 {
     class Facade
     {
-        FileSearcher fileSearcher;
-        FileActions fileActions;
-        ShowInfo showInfo;
+        private FileSearcher fileSearcher ;
+        private FileActions fileActions;
+        private ShowInfo showInfo;
 
         public Facade(FileSearcher fs, FileActions fa, ShowInfo si)
         {
@@ -19,7 +19,7 @@ namespace Nikita_FileManager.Elements
             showInfo = si;
         }
 
-        public void Operation()
+        public static void Operation()
         {
             ShowInfo.Show();
             FileActions.Actions();
